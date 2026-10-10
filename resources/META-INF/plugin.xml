@@ -1,0 +1,97 @@
+<idea-plugin>
+    <id>com.harmony.hdcidea</id>
+    <name>HDC Idea</name>
+    <version>1.1.0</version>
+    <!-- TODO(publish): 换成真实发布者信息，example.com 会被官方仓库拒绝 -->
+    <vendor email="dev@example.com" url="https://www.harmonyos.com">HarmonyOSSN</vendor>
+
+    <description><![CDATA[
+        <p>HDC Idea brings the famous ADB Idea workflow to HarmonyOS development in DevEco Studio.
+        Run common <code>hdc</code> device operations straight from the Tools menu, with automatic
+        hap / bundleName / ability detection from your project files.</p>
+        <p>鸿蒙版 ADB Idea：在 Tools 菜单一键执行 HDC 设备操作，自动识别安装包、bundleName 和 EntryAbility。</p>
+        <ul>
+            <li>Install App — auto-detects the newest .hap in build outputs, or pick one manually (<code>hdc install -r</code>)</li>
+            <li>Uninstall / Kill / Start / Restart app</li>
+            <li>Clear app data (with optional restart)</li>
+            <li>Start / restart app with debugger (<code>aa start -D</code>)</li>
+            <li>Toggle Wi-Fi and mobile data (mobile interface auto-detected via ifconfig)</li>
+            <li>Get device UDID (<code>hdc shell bm get --udid</code>), result copied to clipboard</li>
+            <li>Searchable operations popup (Ctrl+Alt+Shift+A)</li>
+            <li>Built-in HDC console tool window, hdc path auto-detection (DevEco SDK / Huawei SDK)</li>
+        </ul>
+        <p>Requires a HarmonyOS device or emulator connected over hdc.</p>
+    ]]></description>
+
+    <change-notes><![CDATA[
+        <b>1.1.0</b>
+        <ul>
+            <li>New: Install App — installs the newest project .hap (<code>hdc install -r</code>), auto-detected from build outputs with manual file picker fallback</li>
+            <li>New: Get Device UDID — runs <code>hdc shell bm get --udid</code> and copies the result to clipboard</li>
+        </ul>
+        <b>1.0.0</b>
+        <ul>
+            <li>Initial release: uninstall, kill, start, restart, clear app data, debugger variants, Wi-Fi / mobile data toggles</li>
+        </ul>
+    ]]></change-notes>
+
+    <!-- DevEco Studio 4.x/5.x/6.x (platform 223+) -->
+    <idea-version since-build="223"/>
+
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <toolWindow id="HDC" anchor="bottom" icon="/icons/hdc.svg"
+                    factoryClass="com.harmony.hdc.HdcToolWindowFactory"/>
+        <notificationGroup id="HDC Idea" displayType="BALLOON"/>
+    </extensions>
+
+    <actions>
+        <group id="HdcIdea.Menu" text="HDC Idea" popup="true" icon="/icons/hdc.svg">
+            <add-to-group group-id="ToolsMenu" anchor="last"/>
+
+            <action id="Hdc.OperationsPopup" class="com.harmony.hdc.HdcOperationsPopupAction"
+                    text="HDC Operations Popup..." description="Searchable popup of all HDC operations">
+                <keyboard-shortcut keymap="$default" first-keystroke="ctrl alt shift A"/>
+            </action>
+            <separator/>
+
+            <action id="Hdc.UninstallApp" class="com.harmony.hdc.HdcActions$UninstallAppAction"
+                    text="HDC Uninstall App"/>
+            <action id="Hdc.InstallApp" class="com.harmony.hdc.HdcActions$InstallAppAction"
+                    text="HDC Install App" description="Install the newest project .hap (auto-detected from build outputs, or pick one manually)"/>
+            <action id="Hdc.KillApp" class="com.harmony.hdc.HdcActions$KillAppAction"
+                    text="HDC Kill App"/>
+            <action id="Hdc.StartApp" class="com.harmony.hdc.HdcActions$StartAppAction"
+                    text="HDC Start App"/>
+            <action id="Hdc.RestartApp" class="com.harmony.hdc.HdcActions$RestartAppAction"
+                    text="HDC Restart App"/>
+            <action id="Hdc.ClearAppData" class="com.harmony.hdc.HdcActions$ClearAppDataAction"
+                    text="HDC Clear App Data"/>
+            <action id="Hdc.ClearAppDataAndRestart" class="com.harmony.hdc.HdcActions$ClearAppDataAndRestartAction"
+                    text="HDC Clear App Data and Restart"/>
+            <separator/>
+            <action id="Hdc.StartAppWithDebugger" class="com.harmony.hdc.HdcActions$StartAppWithDebuggerAction"
+                    text="HDC Start App With Debugger"/>
+            <action id="Hdc.RestartAppWithDebugger" class="com.harmony.hdc.HdcActions$RestartAppWithDebuggerAction"
+                    text="HDC Restart App With Debugger"/>
+            <action id="Hdc.ClearAppDataAndRestartWithDebugger" class="com.harmony.hdc.HdcActions$ClearAppDataAndRestartWithDebuggerAction"
+                    text="HDC Clear App Data and Restart App With Debugger"/>
+            <separator/>
+            <action id="Hdc.EnableWifi" class="com.harmony.hdc.HdcActions$EnableWifiAction"
+                    text="HDC Enable Wi-Fi"/>
+            <action id="Hdc.DisableWifi" class="com.harmony.hdc.HdcActions$DisableWifiAction"
+                    text="HDC Disable Wi-Fi"/>
+            <action id="Hdc.EnableMobileData" class="com.harmony.hdc.HdcActions$EnableMobileDataAction"
+                    text="HDC Enable Mobile Data"/>
+            <action id="Hdc.DisableMobileData" class="com.harmony.hdc.HdcActions$DisableMobileDataAction"
+                    text="HDC Disable Mobile Data"/>
+            <separator/>
+            <action id="Hdc.GetDeviceUdid" class="com.harmony.hdc.HdcActions$GetDeviceUdidAction"
+                    text="HDC Get Device UDID" description="Run hdc shell bm get --udid and copy the result to clipboard"/>
+            <separator/>
+            <action id="Hdc.Settings" class="com.harmony.hdc.HdcSettingsAction"
+                    text="HDC Settings..."/>
+        </group>
+    </actions>
+</idea-plugin>
