@@ -1,12 +1,12 @@
 <idea-plugin>
     <id>com.harmony.hdcidea</id>
-    <name>HDC Idea</name>
+    <name>HDC Assistant</name>
     <version>1.1.0</version>
     <!-- TODO(publish): 换成真实发布者信息，example.com 会被官方仓库拒绝 -->
     <vendor email="dev@example.com" url="https://www.harmonyos.com">HarmonyOSSN</vendor>
 
     <description><![CDATA[
-        <p>HDC Idea brings the famous ADB Idea workflow to HarmonyOS development in DevEco Studio.
+        <p>HDC Assistant brings the famous ADB Idea workflow to HarmonyOS development in DevEco Studio.
         Run common <code>hdc</code> device operations straight from the Tools menu, with automatic
         hap / bundleName / ability detection from your project files.</p>
         <p>鸿蒙版 ADB Idea：在 Tools 菜单一键执行 HDC 设备操作，自动识别安装包、bundleName 和 EntryAbility。</p>
@@ -43,11 +43,11 @@
     <extensions defaultExtensionNs="com.intellij">
         <toolWindow id="HDC" anchor="bottom" icon="/icons/hdc.svg"
                     factoryClass="com.harmony.hdc.HdcToolWindowFactory"/>
-        <notificationGroup id="HDC Idea" displayType="BALLOON"/>
+        <notificationGroup id="HDC Assistant" displayType="BALLOON"/>
     </extensions>
 
     <actions>
-        <group id="HdcIdea.Menu" text="HDC Idea" popup="true" icon="/icons/hdc.svg">
+        <group id="HdcIdea.Menu" text="HDC Assistant" popup="true" icon="/icons/hdc.svg">
             <add-to-group group-id="ToolsMenu" anchor="last"/>
 
             <action id="Hdc.OperationsPopup" class="com.harmony.hdc.HdcOperationsPopupAction"

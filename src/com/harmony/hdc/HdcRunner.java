@@ -87,7 +87,7 @@ public final class HdcRunner {
         if (output == null) {
             HdcConsole.append(project, "[error] hdc process failed to start (hdc not found?)");
             notifyUser(project, HdcCommands.render(argv), true,
-                    "hdc 启动失败，请到 Tools → HDC Idea → HDC Settings 检查路径");
+                    "hdc 启动失败，请到 Tools → HDC Assistant → HDC Settings 检查路径");
             return null;
         }
         if (!output.isBlank()) {
@@ -153,7 +153,7 @@ public final class HdcRunner {
     private static void notifyUser(Project project, String title, boolean error, String detail) {
         ApplicationManager.getApplication().invokeLater(() ->
                 NotificationGroupManager.getInstance()
-                        .getNotificationGroup("HDC Idea")
+                        .getNotificationGroup("HDC Assistant")
                         .createNotification(title, detail == null ? "" : detail,
                                 error ? NotificationType.ERROR : NotificationType.INFORMATION)
                         .notify(project));

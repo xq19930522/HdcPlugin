@@ -45,7 +45,7 @@ public abstract class AbstractHdcAction extends AnAction implements DumbAware {
 
         String hdc = HdcPathLocator.findHdc(project);
         if (hdc == null) {
-            HdcConsole.append(project, "[error] hdc not found. Set it in Tools → HDC Idea → HDC Settings");
+            HdcConsole.append(project, "[error] hdc not found. Set it in Tools → HDC Assistant → HDC Settings");
             boolean ok = new HdcSettingsDialog(project).showAndGet();
             if (ok) {
                 hdc = HdcPathLocator.findHdc(project);

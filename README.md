@@ -1,4 +1,4 @@
-# HDC Idea
+# HDC Assistant
 
 > HarmonyOS 版 ADB Idea —— 在 DevEco Studio 里一键执行 HDC 设备操作。
 >
@@ -35,12 +35,12 @@
 
 ### 方式一：插件市场（推荐）
 
-Settings → Plugins → Marketplace → 搜索 **HDC Idea** → Install。
+Settings → Plugins → Marketplace → 搜索 **HDC Assistant** → Install。
 （插件正在提交 JetBrains 官方仓库审核，审核通过前请用方式二。）
 
 ### 方式二：本地安装
 
-1. 下载 [HdcIdea-1.1.0.zip](dist/HdcIdea-1.1.0.zip)
+1. 下载 [HdcAssistant-1.1.0.zip](dist/HdcAssistant-1.1.0.zip)
 2. DevEco Studio → Settings → Plugins → ⚙ → **Install Plugin from Disk...** 选择该 zip
 3. 重启 IDE
 
@@ -48,10 +48,10 @@ Settings → Plugins → Marketplace → 搜索 **HDC Idea** → Install。
 
 1. 用数据线或 Wi-Fi 连接设备，确认 `hdc list targets` 能看到设备
 2. 打开 HarmonyOS 工程，通过以下任一入口执行操作：
-   - **Tools → HDC Idea** 菜单
+   - **Tools → HDC Assistant** 菜单
    - `Ctrl+Alt+Shift+A` 呼出 Operations Popup，输入过滤（如 `install`、`udid`）回车执行
 3. 底部 **HDC 工具窗口**查看命令输出；Get UDID 的结果会自动复制到剪贴板
-4. 如需覆盖 hdc 路径或 bundleName：**Tools → HDC Idea → HDC Settings...**
+4. 如需覆盖 hdc 路径或 bundleName：**Tools → HDC Assistant → HDC Settings...**
 
 ## 🏗️ 从源码构建
 
@@ -63,8 +63,8 @@ python build.py
 
 产出：
 
-- `out/HdcIdea.jar` —— 插件 jar（本地磁盘安装用）
-- `dist/HdcIdea-1.1.0.zip` —— 分发包（`lib/` 标准布局，上传插件市场用）
+- `out/HdcAssistant.jar` —— 插件 jar（本地磁盘安装用）
+- `dist/HdcAssistant-1.1.0.zip` —— 分发包（`lib/` 标准布局，上传插件市场用）
 
 ### 冒烟测试
 

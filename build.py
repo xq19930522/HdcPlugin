@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""构建 HDC Idea 插件（与 ComponentGenerator 同一套路）。"""
+"""构建 HDC Assistant 插件（与 ComponentGenerator 同一套路）。"""
 import os
 import shutil
 import subprocess
@@ -11,9 +11,9 @@ DEVECO = os.environ.get("DEVECO_HOME", r"E:\DevEco Studio")
 JAVAC = os.path.join(DEVECO, "jbr", "bin", "javac.exe")
 OUT = os.path.join(ROOT, "out")
 CLASSES = os.path.join(OUT, "classes")
-JAR_PATH = os.path.join(OUT, "HdcIdea.jar")
+JAR_PATH = os.path.join(OUT, "HdcAssistant.jar")
 DIST = os.path.join(ROOT, "dist")
-ZIP_PATH = os.path.join(DIST, "HdcIdea-1.1.0.zip")
+ZIP_PATH = os.path.join(DIST, "HdcAssistant-1.1.0.zip")
 
 
 def find_sources():
@@ -67,7 +67,7 @@ def main():
     if os.path.exists(ZIP_PATH):
         os.remove(ZIP_PATH)
     with zipfile.ZipFile(ZIP_PATH, "w", zipfile.ZIP_DEFLATED) as zf:
-        zf.write(JAR_PATH, "HdcIdea/lib/HdcIdea.jar")
+        zf.write(JAR_PATH, "HdcAssistant/lib/HdcAssistant.jar")
     print(f"      {ZIP_PATH}")
     print("完成。")
 
